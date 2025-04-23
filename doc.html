@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt IIS</title>
+    <style type="text/css">
+        table { border-collapse: collapse; }
+        td, th { border: 1px solid black; padding: 0.3em 0.5em; text-align: left; }
+        dt { font-weight: bold; margin-top: 0.5em; }
+    </style>
+</head>
+<body>
+<h1>Umělecká škola</h1> <!-- Nahraďte názvem svého zadání -->
+<dl>
+    <dt>Autoři</dt>
+    <dd>První jméno <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+        <a href="mailto:xamank00@stud.fit.vutbr.cz">xamank00@stud.fit.vutbr.cz</a> -
+        Všechny skripty byly napsány společně
+    </dd>
+    <dd>Druhé jméno <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+        <a href="mailto:xkinas00@stud.fit.vutbr.cz">xkinas00@stud.fit.vutbr.cz</a> -
+        Všechny skripty byly napsány společně
+    </dd>
+    <dt>URL aplikace</dt>
+    <dd><a href="https://iis-system-eugtgrbtdrf2fpay.polandcentral-01.azurewebsites.net/">https://iis-system-eugtgrbtdrf2fpay.polandcentral-01.azurewebsites.net/</a></dd>
+</dl>
+
+<h2>Uživatelé systému pro testování</h2>
+<table>
+<tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
+<tr><td>admin_iis@gmail.com</td><td>iis_proj24</td><td>Administrátor</td></tr>
+<tr><td>manager_1@gmail.com	</td><td>manag_iis24</td><td>Správce ateliéru</td></tr>
+<tr><td>manager_2@gmail.com	</td><td>manager</td><td>Druhý správce ateliéru</td></tr>
+<tr><td>instructor_1@gmail.com </td><td>instructor</td><td>Vyučující</td></tr>
+<tr><td>instructor_2@gmail.com </td><td>instructor2</td><td>Druhý vyučující</td></tr>
+<tr><td>user1@gmail.com </td><td>user1</td><td>Registrovaný uživatel 1</td></tr>
+<tr><td>user2@gmail.com </td><td>user2</td><td>Registrovaný uživatel 2</td></tr>
+<tr><td>user3@gmail.com </td><td>user3</td><td>Registrovaný uživatel 3</td></tr>
+<tr><td>user4@gmail.com </td><td>user4</td><td>Registrovaný uživatel 4</td></tr>
+<tr><td>user5@gmail.com </td><td>user5</td><td>Registrovaný uživatel 5</td></tr>
+<tr><td>user6@gmail.com </td><td>user6</td><td>Registrovaný uživatel 6</td></tr>
+</table>
+
+
+<h3>Video</h3>
+
+<a href="https://drive.google.com/file/d/14Rhk--OC-NYyw1iw-yDooHAHd0sf8Hov/view?usp=sharing">https://drive.google.com/file/d/14Rhk--OC-NYyw1iw-yDooHAHd0sf8Hov/view?usp=sharing</a>
+
+
+<h2>Implementace:</h2>
+    <h3>Use Cases a odpovídající PHP skripty</h3>
+    <h4>Administrátor:</h4>
+    <ul>
+        <li><strong>Správa uživatelů:</strong> <code>manage_studio_users.php</code></li>
+        <li><strong>Vytváření a správa ateliérů:</strong> <code>manage_studios.php</code>, <code>edit_studio.php</code></li>
+        <li><strong>Přiřazení práv správce ateliéru:</strong> <code>manage_studio_users.php</code></li>
+        <li><strong>Přístup ke všem rolím:</strong> Obsahuje funkce uvedené v sekcích níže.</li>
+    </ul>
+
+    <h4>Správce ateliéru:</h4>
+    <ul>
+        <li><strong>Vkládání a správa typů zařízení:</strong> <code>manage_equipment_types.php</code></li>
+        <li><strong>Přiřazení práv vyučujícího uživatelům:</strong> <code>manage_studio_users.php</code></li>
+        <li><strong>Přiřazení uživatelů k ateliéru:</strong> <code>assign_users_to_studio.php</code></li>
+    </ul>
+
+    <h4>Vyučující:</h4>
+    <ul>
+        <li><strong>Vkládá a spravuje zařízení:</strong> <code>create_equipment.php</code>, <code>edit_equipment.php</code>, <code>my_equipment.php</code></li>
+        <li><strong>Může dočasně zakázat půjčování zařízení:</strong> <code>my_equipment.php</code></li>
+        <li><strong>Upravuje seznam registrovaných uživatelů přiřazených k ateliéru, kteří si mohou půjčovat vybavení:</strong> <code>manage_device_restrictions.php</code></li>
+    </ul>
+
+    <h4>Registrovaný uživatel:</h4>
+    <ul>
+        <li><strong>Vidí veškeré zařízení, které si může vypůjčit:</strong> <code>equipment_page.php, </code><code>main_page.php, </code><code>view_equipment.php</code></li>
+        <li><strong>Vypůjčí si zařízení na předem zvolenou dobu:</strong> <code>view_equipment.php</code></li>
+        <li><strong>Půjčování zařízení:</strong> <code>reservations.php</code></li>
+        <li><strong>Sledování stavu půjček:</strong> <code>borrowings.php</code></li>
+        <li><strong>Úprava profilu:</strong> <code>edit_profile.php</code></li>
+    </ul>
+
+    <h4>Neregistrovaný uživatel:</h4>
+    <ul>
+        <li><strong>Registrace do systému:</strong> <code>register.php</code></li>
+    </ul>
+
+    <h4>Společné funkce:</h4>
+    <ul>
+        <li><strong>Úvodní stránka:</strong> <code>index.php</code></li>
+        <li><strong>Hlavní stránka uživatele:</strong> <code>main_page.php</code></li>
+        <li><strong>Přihlášení:</strong> <code>login.php</code></li>
+        <li><strong>Odhlášení:</strong> <code>logout.php</code></li>
+        <li><strong>Připojení k databázi:</strong> <code>db_connection.php</code></li>
+        <li><strong>Inicializace databáze:</strong> <code>database.sql</code></li>
+    </ul>
+<h2>Konec Implementace.</h2>
+
+<h3>Databáze</h3>
+<dd><a href="https://drive.google.com/file/d/1tjaSBuaY3GIvste_vdNQYJac0jF1NbfP/view?usp=sharing">https://drive.google.com/file/d/1tjaSBuaY3GIvste_vdNQYJac0jF1NbfP/view?usp=sharing</a></dd>
+
+<h2>Instalace</h2>
+
+<h3>1) Systémové požadavky</h3>
+    <ul>
+        <li><strong>PHP:</strong> Verze 8.3 nebo vyšší.</li>
+        <li><strong>Webový server:</strong> Apache 2.</li>
+        <li><strong>Operační systém:</strong> Linux nebo Windows.</li>
+        <li><strong>Databáze:</strong> MySQL.</li>
+    </ul>
+
+    <h3>2) Konfigurace databáze</h3>
+    <p>V současnosti je databáze plně implementována a hostována na naší instanci Azure Database. Pokud však chcete změnit umístění databáze, postupujte podle následujících kroků:</p>
+    <ol>
+        <li>
+            <strong>Vytvoření potřebných tabulek:</strong>
+            <p>Použijte soubor <code>database.sql</code>, který je součástí projektu, k vytvoření všech potřebných tabulek ve vaší instanci MySQL.</p>
+        </li>
+        <li>
+            <strong>Aktualizace nastavení připojení:</strong>
+            <p>Otevřete soubor <code>db_connection.php</code> a upravte údaje pro připojení k databázi (např. host, uživatelské jméno, heslo a název databáze), aby odpovídaly vašemu novému nastavení.</p>
+        </li>
+    </ol>
+    <p>Po aktualizaci souboru <code>db_connection.php</code> bude aplikace správně nakonfigurována pro nové umístění databáze.</p>
+    <h3>3) Návod na instalace</h3>
+    <ol>
+        <li>
+            <strong>Pro systém Linux</strong>
+            <p>Postupujte podle následujících kroků:</p>
+            <ol>
+                <li>
+                    <strong>Nainstalujte potřebné balíčky:</strong>
+                    <pre><code>sudo apt install apache2 php libapache2-mod-php php-mysql mysql-server</code></pre>
+                    <p>Tento příkaz nainstaluje webový server Apache, PHP, a MySQL spolu s potřebnými moduly.</p>
+                </li>
+                <li>
+                    <strong>Rozbalte projekt:</strong>
+                    <pre><code>unzip project.zip -d ~/project</code></pre>
+                    <p>Rozbalí soubory projektu do složky <code>~/project</code>.</p>
+                </li>
+                <li>
+                    <strong>Přejděte do zdrojové složky:</strong>
+                    <pre><code>cd ~/project/src</code></pre>
+                    <p>Změní aktuální pracovní adresář na složku <code>src</code> projektu.</p>
+                </li>
+                <li>
+                    <strong>Zkopírujte soubory projektu do webového adresáře:</strong>
+                    <pre><code>sudo cp -r ~/project/src/* /var/www/html/</code></pre>
+                    <p>Tento příkaz zkopíruje všechny soubory projektu do složky <code>/var/www/html/</code>, která je výchozím adresářem pro Apac</p>
+                </li>
+                <li>
+                    <strong>Změňte oprávnění:</strong>
+                    <pre><code>sudo chown -R www-data:www-data /var/www/html/
+sudo chmod -R 755 /var/www/html/</code></pre>
+                    <p>Tyto příkazy zajistí správná oprávnění pro soubory projektu, aby byly přístupné Apache.</p>
+                </li>
+                <li>
+                    <strong>Restartujte Apache:</strong>
+                    <pre><code>sudo systemctl restart apache2</code></pre>
+                    <p>Tento příkaz znovu načte konfiguraci a spustí Apache.</p>
+                </li>
+            </ol>
+        </li>
+    </ol>
+
+</ul>
+
+<h2>Známé problémy</h2>
+<p>Testovali jsme mnoho různých variant práce se systémem a všechny nalezené chyby byly opraveny. Avšak vzhledem k rozsahu projektu nemůžeme zaručit, že systém je zcela bezchybný a neobsahuje žádné skryté chyby.</p>
+
+</body>
+</html>
