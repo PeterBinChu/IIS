@@ -9,6 +9,7 @@ This project provides an equipment and studio management system. It includes fun
 .
 ├── database.sql                 # Database schema and initial data
 ├── doc.html                     # Project documentation
+├── README.md                    # Project README
 └── src
     ├── assign_users_to_studio.php
     ├── borrowings.php
